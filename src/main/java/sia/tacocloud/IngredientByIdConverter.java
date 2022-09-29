@@ -1,6 +1,7 @@
 package sia.tacocloud;
 
 import org.springframework.core.convert.converter.Converter;
+import sia.tacocloud.data.Ingredient;
 
 import java.util.HashMap;
 import java.util.Map;

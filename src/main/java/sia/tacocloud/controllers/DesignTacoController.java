@@ -5,10 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import sia.tacocloud.Ingredient;
-import sia.tacocloud.Ingredient.Type;
-import sia.tacocloud.Taco;
-import sia.tacocloud.TacoOrder;
+import sia.tacocloud.data.Ingredient;
+import sia.tacocloud.data.Ingredient.Type;
+import sia.tacocloud.data.Taco;
+import sia.tacocloud.data.TacoOrder;
 
 import javax.validation.Valid;
 import java.util.Arrays;
