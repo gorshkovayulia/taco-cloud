@@ -29,6 +29,9 @@ public class DesignTacoController {
         this.ingredientRepository = ingredientRepository;
     }
 
+    /**
+     * Creates the list of ingredients
+     */
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
         Iterable<Ingredient> ingredients = ingredientRepository.findAll();
@@ -38,11 +41,17 @@ public class DesignTacoController {
         }
     }
 
+    /**
+     * TacoOrder object saves the state of order during assembling order while user selects ingredients for taco by several requests
+     */
     @ModelAttribute(name = "tacoOrder")
     public TacoOrder order() {
         return new TacoOrder();
     }
 
+    /**
+     * In order View has an object for displaying
+     */
     @ModelAttribute(name = "taco")
     public Taco taco() {
         return new Taco();
