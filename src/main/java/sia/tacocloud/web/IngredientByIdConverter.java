@@ -12,15 +12,15 @@ import java.util.Map;
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
-    private IngredientRepository ingredientRepository;
+    private IngredientRepository ingredientRepo;
 
     @Autowired
-    public IngredientByIdConverter(IngredientRepository ingredientRepository) {
-        this.ingredientRepository = ingredientRepository;
+    public IngredientByIdConverter(IngredientRepository ingredientRepo) {
+        this.ingredientRepo = ingredientRepo;
     }
 
     @Override
     public Ingredient convert(String id) {
-        return ingredientRepository.findById(id).orElse(null);
+        return ingredientRepo.findById(id).orElse(null);
     }
 }
