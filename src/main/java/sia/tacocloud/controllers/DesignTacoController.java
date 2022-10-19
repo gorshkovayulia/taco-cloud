@@ -16,9 +16,14 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Hand off the request and the ingredient data to a view template to be rendered
+ * as HTML and sent to the requesting web browser
+ */
 @Slf4j
 @Controller
 @RequestMapping("/design")
+// TacoOrder object that is put into the model a little later in the class should be maintained in session -->
 @SessionAttributes("tacoOrder")
 public class DesignTacoController {
 
@@ -62,6 +67,8 @@ public class DesignTacoController {
         return "design";
     }
 
+    // The @ModelAttribute applied to the Taco-Order parameter indicates that it should use the TacoOrder object
+    // that was placed into the model via the @ModelAttribute-annotated order() method
     @PostMapping
     public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder) {
         if (errors.hasErrors()) {
