@@ -17,7 +17,7 @@ import java.util.List;
  * Defines how customers specify the tacos that they want to order, along with payment and delivery information
  */
 @Data
-@Table
+@Table // optional since the object is mapped to a table based on the domain class name by default
 public class TacoOrder  implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,7 +25,6 @@ public class TacoOrder  implements Serializable {
     private Long id;
     private Date placedAt;
 
-    @Column("customer_name")
     @NotBlank(message="Delivery name is required")
     private String deliveryName;
 
