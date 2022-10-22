@@ -1,19 +1,19 @@
 package sia.tacocloud.data;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
 import lombok.Data;
 
 import java.util.Date;
 import java.util.List;
 
 @Data
-@Table
+@Entity
 public class Taco {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) // DB will generate the ID value automatically
     private Long id;
     private Date createdAt = new Date(); // when Taco object was created
 
@@ -23,6 +23,11 @@ public class Taco {
 
     @NotNull
     @Size(min=1, message="You must choose at least 1 ingredient")
-    private List<IngredientRef> ingredients;
+    @ManyToMany() // A Taco can have many Ingredient objects, and an Ingredient can be a part of many Tacos
+    private List<Ingredient> ingredients;
+
+    public void addIngredient(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
+    }
 
 }

@@ -3,8 +3,8 @@ package sia.tacocloud.data;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -17,11 +17,12 @@ import java.util.List;
  * Defines how customers specify the tacos that they want to order, along with payment and delivery information
  */
 @Data
-@Table // optional since the object is mapped to a table based on the domain class name by default
+@Entity
 public class TacoOrder  implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) // DB will generate the ID value automatically
     private Long id;
     private Date placedAt;
 
@@ -49,6 +50,8 @@ public class TacoOrder  implements Serializable {
     @Digits(integer=3, fraction=0, message="Invalid CVV")
     private String ccCVV;
 
+    @OneToMany(cascade = CascadeType.ALL) // Indicating that the tacos are all specific to this one order + CascadeType.ALL ->
+    // if the order is deleted, its related tacos will also be deleted
     private List<Taco> tacos = new ArrayList<>();
 
     public void addTaco(Taco taco) {
