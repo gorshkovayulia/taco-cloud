@@ -1,3 +1,4 @@
+# application’s underlying servlet container listens for requests on this port
 server:
   port: 8090
 
@@ -5,3 +6,13 @@ spring:
   datasource:
     generate-unique-name: false
     name: tacocloud
+  jpa:
+    # .sql files should not run before hibernate creates the tables
+    defer-datasource-initialization: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        # hibernate may not be detecting queries as MySQL queries (native queries)
+        globally_quoted_identifiers: true
+        ddl-auto: none
+        dialect: org.hibernate.dialect.HSQLDialect
