@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @Data
 @Entity
 @AllArgsConstructor
-// JPA requires that entities have a no-arguments constructor (implicity added a required arguments constructor is removed) -->
+// JPA requires that entities have a no-arguments constructor -->
 @NoArgsConstructor(access=AccessLevel.PRIVATE, force=true)
 public class Ingredient {
 
