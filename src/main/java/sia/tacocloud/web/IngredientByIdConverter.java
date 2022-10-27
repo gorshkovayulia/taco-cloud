@@ -6,9 +6,6 @@ import org.springframework.stereotype.Component;
 import sia.tacocloud.data.Ingredient;
 import sia.tacocloud.repository.IngredientRepository;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
