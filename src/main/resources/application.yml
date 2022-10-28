@@ -4,12 +4,14 @@ server:
 
 spring:
   datasource:
-    generate-unique-name: false
-    name: tacocloud
-    schema: classpath:/sql/schema.sql
-    data: classpath:/sql/data.sql
+    url: jdbc:h2:mem:testdb;DATABASE_TO_UPPER=false;DB_CLOSE_DELAY=-1
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+    database-platform: org.hibernate.dialect.H2Dialect
+    initialization-mode: always
   jpa:
-    # .sql files should not run before hibernate creates the tables
+    # use import.sql to populate a schema created by Hibernate
     defer-datasource-initialization: true
     generate-ddl: true
     properties:
@@ -19,3 +21,8 @@ spring:
         # to avoid hibernate create the schema
         ddl-auto: none
         dialect: org.hibernate.dialect.HSQLDialect
+  h2:
+    console.enabled: true
+  sql:
+    init:
+      mode: always
