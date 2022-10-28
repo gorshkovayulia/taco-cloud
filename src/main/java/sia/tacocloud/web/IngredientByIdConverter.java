@@ -6,10 +6,14 @@ import org.springframework.stereotype.Component;
 import sia.tacocloud.data.Ingredient;
 import sia.tacocloud.repository.IngredientRepository;
 
+/**
+ * Converts a String to an Ingredient since ingredients checkboxes have textual (e.g., String) values and
+ * Taco object represents a list of ingredients as {code}List<Ingredient>{/code}
+ */
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
-    private IngredientRepository ingredientRepo;
+    private final IngredientRepository ingredientRepo;
 
     @Autowired
     public IngredientByIdConverter(IngredientRepository ingredientRepo) {
