@@ -1,4 +1,4 @@
-delete from Ingredient_Ref;
+delete from ingredient_ref;
 delete from taco;
 delete from taco_order;
 delete from ingredient;

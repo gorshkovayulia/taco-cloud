@@ -4,25 +4,19 @@ server:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb;DATABASE_TO_UPPER=false;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:mem:test
     driverClassName: org.h2.Driver
     username: sa
     password: password
-    database-platform: org.hibernate.dialect.H2Dialect
-    initialization-mode: always
   jpa:
     # use import.sql to populate a schema created by Hibernate
     defer-datasource-initialization: true
-    generate-ddl: true
+    generate-ddl: false
     properties:
       hibernate:
-        # hibernate may not be detecting queries as MySQL queries (native queries)
-        globally_quoted_identifiers: true
-        # to avoid hibernate create the schema
-        ddl-auto: none
         dialect: org.hibernate.dialect.HSQLDialect
   h2:
     console.enabled: true
   sql:
     init:
-      mode: always
+      mode: never
