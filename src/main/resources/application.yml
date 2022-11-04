@@ -20,3 +20,13 @@ spring:
   sql:
     init:
       mode: never
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            # The 'clientID' and 'secret' are the credentials that identify application to Facebook
+            clientId: <facebook client id>
+            clientSecret: <facebook client secret>
+            # Specifies the access that the application will be granted
+            scope: email, public_profile

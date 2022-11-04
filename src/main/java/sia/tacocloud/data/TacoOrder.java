@@ -20,9 +20,11 @@ import java.util.List;
 public class TacoOrder  implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // DB will generate the ID value automatically
     private Long id;
+
     private Date placedAt;
 
     @NotBlank(message="Delivery name is required")
@@ -52,6 +54,10 @@ public class TacoOrder  implements Serializable {
     @OneToMany(cascade = CascadeType.ALL) // Indicating that the tacos are all specific to this one order + CascadeType.ALL ->
     // if the order is deleted, its related tacos will also be deleted
     private List<Taco> tacos = new ArrayList<>();
+
+    @ManyToOne // To achieve the desired connection between an TacoOrder entity and a User entity:
+    // an order belongs to a single user and, conversely, a user may have many orders
+    private User user;
 
     public void addTaco(Taco taco) {
         this.tacos.add(taco);
