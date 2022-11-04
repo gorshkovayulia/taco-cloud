@@ -47,6 +47,11 @@ public class SecurityConfig {
 //                .antMatchers(HttpMethod.POST, "/admin/**").access("hasRole('ADMIN')")
 
                 .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/design")
+
+                .and()
                 .oauth2Login()
                 .loginPage("/login")
 
