@@ -30,3 +30,12 @@ spring:
             clientSecret: <facebook client secret>
             # Specifies the access that the application will be granted
             scope: email, public_profile
+
+management:
+  endpoints:
+    web:
+      # The Actuator prefix path
+      base-path: /management
+      exposure:
+        include: '*'
+        exclude: threaddump, heapdump
