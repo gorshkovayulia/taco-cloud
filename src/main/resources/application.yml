@@ -25,17 +25,28 @@ spring:
       client:
         registration:
           facebook:
-            # The 'clientID' and 'secret' are the credentials that identify application to Facebook
+            # the 'clientID' and 'secret' are the credentials that identify application to Facebook
             clientId: <facebook client id>
             clientSecret: <facebook client secret>
-            # Specifies the access that the application will be granted
+            # specifies the access that the application will be granted
             scope: email, public_profile
 
+# actuator
 management:
+  info:
+    env:
+      enabled: true
   endpoints:
     web:
-      # The Actuator prefix path
       base-path: /management
       exposure:
         include: '*'
         exclude: threaddump, heapdump
+  endpoint:
+    health:
+      # to show the full details of all health indicators
+      show-details: always
+
+info:
+  contact:
+    email: gorshkovayulia93@gmail.com
