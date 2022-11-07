@@ -36,6 +36,10 @@ management:
   info:
     env:
       enabled: true
+    # to get extremely detailed information about the Git commit
+    git:
+      enabled: true
+      mode: full
   endpoints:
     web:
       base-path: /management
