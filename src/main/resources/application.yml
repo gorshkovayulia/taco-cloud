@@ -3,6 +3,9 @@ server:
   port: 8090
 
 spring:
+  # to identify an application
+  application:
+    name: taco-cloud
   datasource:
     url: jdbc:h2:mem:test
     driverClassName: org.h2.Driver
@@ -30,6 +33,11 @@ spring:
             clientSecret: <facebook client secret>
             # specifies the access that the application will be granted
             scope: email, public_profile
+  # the location of the Admin server so that the client (taco-cloud app) can register itself
+  boot:
+    admin:
+      client:
+        url: http://localhost:9090
 
 # actuator
 management:
