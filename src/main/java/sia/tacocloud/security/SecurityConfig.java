@@ -1,5 +1,6 @@
 package sia.tacocloud.security;
 
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -43,8 +44,6 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/design", "/orders").access("hasRole('USER')")
                 .antMatchers("/", "/**").access("permitAll()")
-                // Only authorized users are allowed to perform this POST request -->
-//                .antMatchers(HttpMethod.POST, "/admin/**").access("hasRole('ADMIN')")
 
                 .and()
                 .formLogin()
@@ -55,11 +54,15 @@ public class SecurityConfig {
                 .oauth2Login()
                 .loginPage("/login")
 
+                // enableLogout
                 .and()
                 .logout()
                 .logoutSuccessUrl("/")
 
+                // disable CSRF in order not to prevent client applications from registering with the Admin Server
                 .and()
+                .csrf()
+                .disable()
                 .build();
     }
 }
