@@ -23,6 +23,10 @@ spring:
   sql:
     init:
       mode: never
+  data:
+    rest:
+      # a base path for the API so that its endpoints are distinct and don’t collide with any written controllers
+      base-path: /data-api
   security:
     oauth2:
       client:
