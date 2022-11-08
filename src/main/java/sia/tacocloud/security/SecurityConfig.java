@@ -43,6 +43,7 @@ public class SecurityConfig {
         return http
                 .authorizeRequests()
                 .antMatchers("/design", "/orders").access("hasRole('USER')")
+                .antMatchers("/management/**").hasRole("ADMIN")
                 .antMatchers("/", "/**").access("permitAll()")
 
                 .and()
