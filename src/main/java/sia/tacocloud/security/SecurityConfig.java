@@ -60,10 +60,7 @@ public class SecurityConfig {
                 .logout()
                 .logoutSuccessUrl("/")
 
-                // disable CSRF in order not to prevent client applications from registering with the Admin Server
                 .and()
-                .csrf()
-                .disable()
                 .build();
     }
 }
