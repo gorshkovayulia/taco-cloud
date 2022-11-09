@@ -12,7 +12,7 @@ import sia.tacocloud.repository.IngredientRepository;
  */
 @RestController
 @RequestMapping(path="/api/ingredients", produces="application/json")
-@CrossOrigin(origins="http:/ /localhost:8090") // // Allows clients from localhost, port 8090, to access the API
+@CrossOrigin(origins="http:/ /localhost:8090") // Allows clients from localhost, port 8090, to access the API
 public class IngredientController {
     private IngredientRepository repo;
 
