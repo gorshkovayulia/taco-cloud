@@ -45,8 +45,9 @@ public class SecurityConfig {
                 .antMatchers("/design", "/orders").access("hasRole('USER')")
                 .antMatchers("/management/**").hasRole("ADMIN")
                 .antMatchers("/", "/**").access("permitAll()")
-                .antMatchers(HttpMethod.POST, "/ingredients").hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/ingredients/**").hasRole("ADMIN")
+                // The alternative way to secure endpoints -->
+//                .antMatchers(HttpMethod.POST, "/ingredients").hasRole("ADMIN")
+//                .antMatchers(HttpMethod.DELETE, "/ingredients/**").hasRole("ADMIN")
 
                 .and()
                 .formLogin()
