@@ -1,8 +1,8 @@
 package sia.tacocloud.security;
 
-import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -45,6 +45,8 @@ public class SecurityConfig {
                 .antMatchers("/design", "/orders").access("hasRole('USER')")
                 .antMatchers("/management/**").hasRole("ADMIN")
                 .antMatchers("/", "/**").access("permitAll()")
+                .antMatchers(HttpMethod.POST, "/ingredients").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/ingredients/**").hasRole("ADMIN")
 
                 .and()
                 .formLogin()
